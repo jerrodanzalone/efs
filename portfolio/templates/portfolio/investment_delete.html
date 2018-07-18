@@ -1,0 +1,13 @@
+{% extends 'portfolio/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>Delete {{ investment.name }}?</h1>
+    <form method="POST" class="investment-form">{% csrf_token %}
+          {{ form|crispy }}
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Delete">
+        <a href="{% url 'portfolio:home' pk=investment.pk %} ">Cancel</a>
+    </form>
+{% endblock %}
